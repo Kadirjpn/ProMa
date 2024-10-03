@@ -10,6 +10,9 @@ matplotlib.use('Agg')
 
 def plot_grade_comparison_view(request, student_id):
     # Load the CSV file
+
+    # df_path = Path(__file__).parents[1] / 'HajiProject/Data/epic1data.csv' with open(pkl_path, 'rb') as f:
+    # loaded_analyzer = pickle.load(f)
     
     df = pd.read_csv('D:\ProjectHaji\HajiProject\Data\epic1data.csv')
     print("------------", int(student_id))
