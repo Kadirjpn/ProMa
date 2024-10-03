@@ -148,7 +148,7 @@ import pickle
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 # Load the sentiment analyzer model from the pickle file
-with open(f'D:\ProjectHaji\HajiProject\PKL_Files\model_feedback_analyzer.pkl', 'rb') as f:
+with open(f'ProjectHaji\HajiProject\PKL_Files\model_feedback_analyzer.pkl', 'rb') as f:
     loaded_analyzer = pickle.load(f)
 
 def get_sentiment_score_and_label(text):
