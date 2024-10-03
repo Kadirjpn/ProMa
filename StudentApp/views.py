@@ -146,9 +146,13 @@ from django.shortcuts import render, get_object_or_404
 from .models import Feedback
 import pickle
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-url="https:\\github.com\Kadirjpn\ProMa\blob\main\HajiProject\PKL_Files\model_feedback_analyzer.pkl"
+from pathlib import Path
+
+pkl_path = Path(__file__).parents[1] / 'HajiProject/PKL_Files/model_feedback_analyzer.pkl'
+
+# url="https:\\github.com\Kadirjpn\ProMa\blob\main\HajiProject\PKL_Files\model_feedback_analyzer.pkl"
 # Load the sentiment analyzer model from the pickle file
-with open(f'model_feedback_analyzer.pkl', 'rb') as f:
+with open(pkl_path, 'rb') as f:
     loaded_analyzer = pickle.load(f)
 
 def get_sentiment_score_and_label(text):
