@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff4e6; /* Light orange background */
+        }
+
+        .feedback-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffe6cc; /* Light orange container */
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #cc6600; /* Dark orange text */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #ff8000; /* Medium orange */
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ffcc99; /* Light orange border */
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fff4e6; /* Very light orange for inputs */
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #ff6600; /* Bright orange for button */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #cc5200; /* Darker orange on hover */
+        }
+
+        .error{
+            color: rgb(10, 105, 247); /* Red error message */
+            font-size: 14px;
+            margin-top: -10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="feedback-container">
+        <h2>Submit Feedback</h2>
+        <form method="post">
+            {% csrf_token %}
+
+            <!-- Student ID Field -->
+            <label for="student_id">Student ID</label>
+            <input type="text" id="student_id" name="student_id" placeholder="Enter the Student ID" value="">
+            {% if form.student_id.errors %}
+                <p class="error">{{ form.student_id.errors.0 }}</p>  <!-- Display red error message -->
+            {% endif %}
+
+            <!-- Counselor Name Field -->
+            <label for="counselor_name">Counselor Name</label>
+            <input type="text" id="counselor_name" name="counselor_name" placeholder="Enter your name" value="{{ form.counselor_name.value|default:'' }}">
+            {% if form.counselor_name.errors %}
+                <p class="error">{{ form.counselor_name.errors }}</p>
+            {% endif %}
+
+            <!-- Counselor ID Field -->
+            <label for="counselor_id">Counselor ID</label>
+            <input type="text" id="counselor_id" name="counselor_number" placeholder="Enter your ID" value="{{ form.counselor_number.value|default:'' }}">
+            {% if form.counselor_number.errors %}
+                <p class="error">{{ form.counselor_number.errors }}</p>
+            {% endif %}
+
+            <!-- Feedback Text Field -->
+            <label for="feedback_text">Feedback</label>
+            <textarea id="feedback_text" name="feedback_text" placeholder="Enter your feedback here">{{ form.feedback_text.value|default:'' }}</textarea>
+            {% if form.feedback_text.errors %}
+                <p class="error">{{ form.feedback_text.errors }}</p>
+            {% endif %}
+
+            <!-- Submit Button -->
+            <button type="submit">Submit Feedback</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Track Progress</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #004080;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 26px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #004080;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-size: 22px;
+            color: #555;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 40px;
+    }
+
+    /* Card style for each piece of information */
+    .info-card {
+        flex: 1 1 45%;
+        background-color: white;
+        border: 1px solid #e0e0e0;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Card style for each piece of information */
+    .info-card-grade {
+        flex: 1 1 45%;
+        background-color: white;
+        border: 2px solid #f105b6;
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    /* Card style for each piece of information */
+    .info-card-course {
+        flex: 1 1 45%;
+        background-color: white;
+        border: 1px solid rgb(9, 250, 21);
+        padding: 15px 20px;
+        border-radius: 8px;
+        margin: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+ 
+    /* Label style (left side) */
+    .info-label {
+        font-weight: bold;
+        font-size: 18px;
+        color: #333;
+        margin-right: 10px;
+    }
+
+    /* Value style (right side) */
+    .info-value {
+        font-size: 18px;
+        color: #004080;
+        font-weight: 600;
+    }
+
+    
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+        .info-card {
+            flex: 1 1 100%;
+        }
+    }
+        .plot-container {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 20px;
+            background-color: #f9fafb;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .plot-container img {
+            width: 80%;
+            max-width: 1000px;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #00796b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+          
+        }
+
+
+        .btn:hover {
+            background-color: #002d5a;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 14px;
+            color: #777;
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Success Blueprint</h1>
+
+        <div class="info">
+            <div class="info-card">
+                <span class="info-label">Student ID:</span>
+                <span class="info-value">{{ student_id }}</span>
+            </div>
+            <div class="info-card-grade">
+                <span class="info-label">Final Grade:</span>
+                <span class="info-value">{{ final_grade }}</span>
+            </div>
+            <div class="info-card">
+                <span class="info-label">Number of Students with the Same Grade <b>{{ final_grade }}</b>:</span>
+                <span class="info-value">{{ same_grade_count }}</span>
+            </div>
+            <div class="info-card-course">
+                <span class="info-label">Selected Course:</span>
+                <span class="info-value">{{ selected_student_course }}</span>
+            </div>
+            <div class="info-card">
+                <span class="info-label">Number of Students with the Same Course:</span>
+                <span class="info-value">{{ same_course_count }}</span>
+            </div>
+        </div>
+
+        <div class="plot-container">
+            <h2>Grade Comparison</h2>
+            <img src="data:image/png;base64,{{ encoded_image_grade_comparison }}" alt="Grade Comparison Plot">
+        </div>
+
+        <div class="plot-container">
+            <h2>Course Comparison</h2>
+            <img src="data:image/png;base64,{{ encoded_image_course_comparison }}" alt="Course Comparison Plot">
+        </div>
+
+        <div class="plot-container">
+            <h2>Hard Skill 1 Comparison</h2>
+            <img src="data:image/png;base64,{{ encoded_image_skill_1 }}" alt="Hard Skill 1 Comparison Plot">
+        </div>
+
+        <!-- Add more plots for Hard Skill 2 and 3 if available -->
+
+        <div class="btn-container">
+            <a href="/dashboard" class="btn">Back to Dashboard</a>
+        </div>
+
+        {% if message %}
+        <div>
+        <p>{{ message }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Your Application Name. All rights reserved.
+    </div>
+
+</body>
+</html>

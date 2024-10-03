@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f5;
+            color: #004d40;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #00695c;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 5px solid #004d40;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+        }
+
+        .content {
+            padding: 40px 30px;
+            text-align: left;
+        }
+
+        .info {
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .info p {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .info strong {
+            color: #00695c;
+        }
+
+        .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin: 50px auto;
+        max-width: 400px; /* Limit width for a sleek vertical layout */
+    }
+
+    /* Button Style */
+    .action-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        width: 100%;
+        max-width: 300px; /* Consistent button width */
+        background-color: #004d40;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    .action-button:hover {
+        background-color: #00796b;
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .action-button .icon {
+        margin-right: 10px;
+        font-size: 22px;
+        color: white;
+    }
+
+    /* Special style for logout button */
+    .logout-btn {
+        background-color: #e53935;
+    }
+
+    .logout-btn:hover {
+        background-color: #c62828;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+        .action-button {
+            font-size: 16px;
+            padding: 12px;
+            max-width: 100%;
+        }
+
+        .action-button .icon {
+            font-size: 18px;
+        }
+    }
+        /* No feedback section style */
+        .no-feedback {
+            margin-top: 20px;
+            padding: 15px;
+            color: #c62828;
+            background-color: #ffebee;
+            border-radius: 10px;
+            border-left: 5px solid #c62828;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .action-button {
+                font-size: 16px;
+                padding: 12px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Hello, {{ student.student_name }}! <br>Ready to Conquer Your Next Challenge? !</h1>
+        </div>
+
+        <div class="content">
+            <div class="info">
+                <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+                <p><strong>Email:</strong> {{ student.email }}</p>
+                <p><strong>Location:</strong> {{ student.location }}</p>
+            </div>
+
+            <div class="btn-container">
+                <a href="{% url 'student_recommendation' %}" class="action-button">
+                    <span class="icon">📚</span> Unlock Your Next Learning Adventure
+                </a>
+                <br>
+                <a href="/feedback_result" class="action-button">
+                    <span class="icon">💬</span> Insightful Guidance Just for You
+                </a>
+                <br>
+                <a href="{% url 'student_track_progress' %}" class="action-button">
+                    <span class="icon">📊</span> Track Your Milestones
+                </a>
+                <br>
+                <a href="{% url 'login' %}" class="action-button logout-btn">
+                    <span class="icon">🚪</span> Sign Out & Recharge
+                </a>
+            </div>
+
+            {% if message %}
+                <div class="no-feedback">
+                    <p>{{ message }}</p>
+                </div>
+            {% endif %}
+
+            {% if sentiment_message == "Feedback Not Yet Provided" %}
+                <div class="no-feedback">{{ sentiment_message }}</div>
+            {% else %}
+                <div class="sentiment-result">{{ sentiment_message }}</div>
+            {% endif %}
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Student Portal</p>
+        </div>
+    </div>
+</body>
+</html>

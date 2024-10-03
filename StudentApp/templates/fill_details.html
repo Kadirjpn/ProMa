@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill Details</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e0f7fa;
+            color: #004d40;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #00796b;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        .fill-details-btn {
+            display: inline-block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 12px 24px;
+            background-color: #00796b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: background-color 0.3s ease;
+        }
+
+        .fill-details-btn:hover {
+            background-color: #004d40;
+        }
+
+        .footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+        }
+        td textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 50px; /* Reduced the height for smaller text boxes */
+    }
+    .highlighted-text-skill {
+        background-color: #ff7043; /* Orange background */
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 12px;
+        display: inline-block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .highlighted-text-experience {
+        background-color: #26c6da; /* Cyan background */
+        color: white;
+        font-weight: bold;
+        padding: 15px;
+        border-radius: 12px;
+        display: inline-block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .fill-details-btn {
+        display: inline-block;
+        text-align: center;
+        margin-top: 30px;
+        padding: 12px 24px;
+        background-color: #00796b;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+    }
+
+    .fill-details-btn:hover {
+        background-color: #004d40;
+    }
+
+    .submit-button-container {
+    text-align: center; /* Center-align the button */
+}
+
+    .submit-button {
+        display: inline-block;
+        text-align: center;
+        margin-top: 30px;
+        padding: 12px 24px;
+        background-color: #00796b; /* Purple background */
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background-color: #00796b; /* Darker purple on hover */
+    }
+    /* Logout Button */
+    .logout-btn {
+        display: inline-block;
+        text-align: center;
+        margin-top: 20px;
+        padding: 12px 24px;
+        background-color: #f44336; /* Red for logout */
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: background-color 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        background-color: #d32f2f; /* Darker red on hover */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Your Profile, Your Story</h1>
+        </div>
+
+        
+        <div class="content">
+            <!-- Display error message if present -->
+            {% if error_message %}
+                <div class="error-message" style="color: red; font-weight: bold;">
+                    {{ error_message }}
+                </div>
+            {% endif %}
+        
+            {% if not error_message %}
+                {% if show_fill_button %}
+                    <a href="{% url 'student_skill_form' %}" class="fill-details-btn">Add Your Skills</a>
+                {% else %}
+                    <p class="highlighted-text-skill">Fantastic! You've already shared your incredible skills. Keep growing!</p> <!-- Creative text for skills -->
+                {% endif %}
+        
+                {% if show_experience_button %}
+                    <a href="{% url 'student_experience_form' %}" class="fill-details-btn">Share Your Journey</a>
+                {% else %}
+                    <p class="highlighted-text-experience">Well done! Your valuable experience is on record. Time to conquer new heights!</p> <!-- Creative text for experience -->
+                {% endif %}
+                
+                {% if show_dashboard_button %}
+                <div class="submit-button-container">
+                    <a href="{% url 'dashboard' %}" class="submit-button">Go to Dashboard</a>
+                </div>
+            {% endif %}
+            {% endif %}
+            <div class="submit-button-container"></div>
+                <a href="{% url 'login' %}" class="logout-btn">Logout</a>
+            </div>
+        </div>
+        
+</div>        
+</body>
+</html>

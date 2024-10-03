@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiter Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .dashboard-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+            overflow-x: auto;
+        }
+
+        h2 {
+            color: #495057;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: 600;
+            color: #343a40;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            font-size: 1rem;
+            background-color: #f8f9fa;
+            color: #495057;
+        }
+
+        select:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: #007bff;
+            background-color: #fff;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f3f5;
+            color: #495057;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* Add some responsive design */
+        @media (max-width: 768px) {
+            .dashboard-container {
+                padding: 20px;
+            }
+
+            table th, table td {
+                padding: 10px;
+            }
+
+            .btn {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+        .section-title {
+    font-size: 1.6rem;
+    color: #007bff; /* Matches the button and header styles */
+    font-weight: 600;
+    text-align: center;
+    padding: 10px;
+    margin: 30px 0 20px;
+    border-bottom: 2px solid #007bff; /* Adds a nice divider below */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.logout-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 150px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+            display: block;
+            text-align: center;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Recruiter Dashboard</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="hard_skills">Select Hard Skill:</label>
+            <select name="hard_skills" id="hard_skills" required>
+                <option value="" disabled selected>Select a skill</option>
+                {% for skill in unique_hard_skills %}
+                    <option value="{{ skill }}">{{ skill }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="recommendations">Number of Student Recommendations:</label>
+            <input type="number" name="recommendations" id="recommendations" min="1" placeholder="Enter number of recommendations" required>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+
+        {% if students_with_details %}
+        <h3 class="section-title">Recommended Students</h3>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>CGPA</th>
+                        <th>Certifications</th>
+                        <th>Course Taken</th>
+                        <th>Total Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students_with_details %}
+                    <tr>
+                        <td>{{ student.student_name }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.cgpa }}</td>
+                        <td>{{ student.certifications }}</td>
+                        <td>{{ student.coursetaken }}</td>
+                        <td>{{ student.totexperience }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+
+         <!-- Add the logout button -->
+       <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="logout-btn">Logout</button>
+    </form>
+    </div>
+      
+</body>
+</html>

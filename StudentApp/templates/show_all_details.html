@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Recommendation</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e0f7fa;
+            color: #004d40;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f8ff;
+            color: #00796b;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #00796b;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Details</h1>
+
+        <table>
+            <tr>
+                <th colspan="2">Personal Information</th>
+            </tr>
+            <tr>
+                <td>Student ID</td>
+                <td>{{ student.student_id }}</td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{ student.student_name }}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>{{ student.email }}</td>
+            </tr>
+            <tr>
+                <td>Location</td>
+                <td>{{ student.location }}</td>
+            </tr>
+            <tr>
+                <td>CGPA</td>
+                <td>{{ student.cgpa }}</td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Skill Details</th>
+            </tr>
+            <tr>
+                <td>Course 1</td>
+                <td>{{ skill_details.course_taken_1 }} (Grade: {{ skill_details.grades_1 }})</td>
+            </tr>
+            <tr>
+                <td>Course 2</td>
+                <td>{{ skill_details.course_taken_2 }} (Grade: {{ skill_details.grades_2 }})</td>
+            </tr>
+            <tr>
+                <td>Course 3</td>
+                <td>{{ skill_details.course_taken_3 }} (Grade: {{ skill_details.grades_3 }})</td>
+            </tr>
+            <tr>
+                <td>Certifications</td>
+                <td>{{ skill_details.certifications }}</td>
+            </tr>
+            <tr>
+                <td>Hard Skills</td>
+                <td>{{ skill_details.hard_skills_1 }}, {{ skill_details.hard_skills_2 }}, {{ skill_details.hard_skills_3 }}</td>
+                <td>Hard Skills Score {{ hard_skill_score }}</td>
+            </tr>
+            <tr>
+                <td>Soft Skills</td>
+                <td>{{ skill_details.soft_skills_1 }}, {{ skill_details.soft_skills_2 }}, {{ skill_details.soft_skills_3 }}</td>
+                <td>Soft Skills Score {{ soft_skill_score }}</td>
+            </tr>
+            <tr>
+                <td>OverAll Score {{ overall_score}}</td>
+                <td>Grade Score {{ grade_score}}</td>
+                <td>Profile Score {{ profile_score }}</td>
+            </tr>
+
+            <tr>
+                <th colspan="2">Experience Details</th>
+            </tr>
+            <tr>
+                <td>Previous Job Profile</td>
+                <td>{{ experience_details.previous_job_profile }}</td>
+            </tr>
+            <tr>
+                <td>Previous Experience At</td>
+                <td>{{ experience_details.previous_work_experience_at }} ({{ experience_details.previous_work_experience_years }} years)</td>
+            </tr>
+            <tr>
+                <td>Current Job Profile</td>
+                <td>{{ experience_details.current_job_profile }}</td>
+            </tr>
+            <tr>
+                <td>Current Experience At</td>
+                <td>{{ experience_details.current_work_experience_at }} ({{ experience_details.current_work_experience_years }} years)</td>
+            </tr>
+            <tr>
+                <td>Interests</td>
+                <td>{{ experience_details.interests }}</td>
+            </tr>
+            <tr>
+                <td>Keywords</td>
+                <td>{{ experience_details.keywords }}</td>
+            </tr>
+            <tr>
+                <td>Career Goal</td>
+                <td>{{ experience_details.career_goal }}</td>
+            </tr>
+        </table>
+
+        <a href="{% url 'dashboard' %}" class="back-button">Back to Dashboard</a>
+    </div>
+</body>
+</html>

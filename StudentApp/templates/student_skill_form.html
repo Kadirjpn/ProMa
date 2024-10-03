@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill Skill Details</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e0f7fa; /* Same background as dashboard */
+            color: #004d40;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 60%;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        table, th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #f1f8e9;
+            color: #00796b;
+            font-weight: bold;
+        }
+
+        td input, td select, td textarea {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        td textarea {
+            resize: vertical;
+            height: 60px;
+        }
+
+        .submit-button {
+            background-color: #00796b;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-button:hover {
+            background-color: #004d40;
+        }
+
+        .messages {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .messages li {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .messages li.success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .messages li.error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            td input, td select, td textarea {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form method="post">
+            <h1>Add Your Skills and Let Your Strengths Shine!</h1>
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th colspan="4">Courses and Grades</th>
+                </tr>
+                <tr>
+                    <td>Course 1</td>
+                    <td>{{ form.course_taken_1 }}</td>
+                    <td>Grade</td>
+                    <td>{{ form.grades_1 }}</td>
+                </tr>
+                <tr>
+                    <td>Course 2</td>
+                    <td>{{ form.course_taken_2 }}</td>
+                    <td>Grade</td>
+                    <td>{{ form.grades_2 }}</td>
+                </tr>
+                <tr>
+                    <td>Course 3</td>
+                    <td>{{ form.course_taken_3 }}</td>
+                    <td>Grade</td>
+                    <td>{{ form.grades_3 }}</td>
+                </tr>
+
+                <tr>
+                    <th colspan="4">Certifications</th>
+                </tr>
+                <tr>
+                    <td colspan="4">{{ form.certifications }}</td>
+                </tr>
+
+                <tr>
+                    <th colspan="4">Skills</th>
+                </tr>
+                <tr>
+                    <td>Hard Skill 1</td>
+                    <td>{{ form.hard_skills_1 }}</td>
+                    <td>Soft Skill 1</td>
+                    <td>{{ form.soft_skills_1 }}</td>
+                </tr>
+                <tr>
+                    <td>Hard Skill 2</td>
+                    <td>{{ form.hard_skills_2 }}</td>
+                    <td>Soft Skill 2</td>
+                    <td>{{ form.soft_skills_2 }}</td>
+                </tr>
+                <tr>
+                    <td>Hard Skill 3</td>
+                    <td>{{ form.hard_skills_3 }}</td>
+                    <td>Soft Skill 3</td>
+                    <td>{{ form.soft_skills_3 }}</td>
+                </tr>
+            </table>
+
+            <div style="text-align: center;">
+                <input type="submit" value="Lock In Your Superpowers!" class="submit-button">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

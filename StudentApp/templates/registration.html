@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa;
+            color: #004d40;
+        }
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #004d40;
+            border-radius: 5px;
+        }
+        .errorlist {
+            color: red;
+            margin: 5px 0;
+            list-style: none;
+            padding: 0;
+        }
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Register as a Student</h1>
+        
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <label for="student_id">{{ form.student_id.label }}</label>
+            {{ form.student_id }}
+            {% if form.student_id.errors %}
+                <ul class="errorlist">{{ form.student_id.errors }}</ul>
+            {% endif %}
+
+            <label for="student_name">{{ form.student_name.label }}</label>
+            {{ form.student_name }}
+            {% if form.student_name.errors %}
+                <ul class="errorlist">{{ form.student_name.errors }}</ul>
+            {% endif %}
+
+            <label for="age">{{ form.age.label }}</label>
+            {{ form.age }}
+            {% if form.age.errors %}
+                <ul class="errorlist">{{ form.age.errors }}</ul>
+            {% endif %}
+
+            <label for="gender">{{ form.gender.label }}</label>
+            {{ form.gender }}
+            {% if form.gender.errors %}
+                <ul class="errorlist">{{ form.gender.errors }}</ul>
+            {% endif %}
+
+            <label for="race">{{ form.race.label }}</label>
+            {{ form.race }}
+            {% if form.race.errors %}
+                <ul class="errorlist">{{ form.race.errors }}</ul>
+            {% endif %}
+
+            <label for="location">{{ form.location.label }}</label>
+            {{ form.location }}
+            {% if form.location.errors %}
+                <ul class="errorlist">{{ form.location.errors }}</ul>
+            {% endif %}
+
+            <label for="email">{{ form.email.label }}</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <ul class="errorlist">{{ form.email.errors }}</ul>
+            {% endif %}
+
+            <label for="password">{{ form.password.label }}</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <ul class="errorlist">{{ form.password.errors }}</ul>
+            {% endif %}
+
+            <label for="confirm_password">{{ form.confirm_password.label }}</label>
+            {{ form.confirm_password }}
+            {% if form.confirm_password.errors %}
+                <ul class="errorlist">{{ form.confirm_password.errors }}</ul>
+            {% endif %}
+
+            <label for="cgpa">{{ form.cgpa.label }}</label>
+            {{ form.cgpa }}
+            {% if form.cgpa.errors %}
+                <ul class="errorlist">{{ form.cgpa.errors }}</ul>
+            {% endif %}
+
+            <label for="previous_achievements">{{ form.previous_achievements.label }}</label>
+            {{ form.previous_achievements }}
+            {% if form.previous_achievements.errors %}
+                <ul class="errorlist">{{ form.previous_achievements.errors }}</ul>
+            {% endif %}
+
+            <button type="submit">Register</button>
+        </form>
+
+        
+    </div>
+</body>
+</html>

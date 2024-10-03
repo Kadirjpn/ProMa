@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fill Experience Details</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e0f7fa;
+            color: #004d40;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto; /* Enable scrolling if content is long */
+        }
+
+        .container {
+            width: 60%;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        table, th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: #f1f8e9;
+            color: #00796b;
+            font-weight: bold;
+        }
+
+        td input, td select, td textarea {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        td textarea {
+            resize: vertical;
+            height: 60px;
+        }
+
+        .submit-button {
+            background-color: #00796b;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-button:hover {
+            background-color: #004d40;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            td input, td select, td textarea {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tell Us Where You've Been and What You've Accomplished!</h1>
+        <form method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <th colspan="4">Previous Work Experience</th>
+                </tr>
+                <tr>
+                    <td>Experience Type</td>
+                    <td>{{ form.previous_work_experience_type }}</td>
+                    <td>Years</td>
+                    <td>{{ form.previous_work_experience_years }}</td>
+                </tr>
+                <tr>
+                    <td>Job Profile</td>
+                    <td>{{ form.previous_job_profile }}</td>
+                    <td>Workplace</td>
+                    <td>{{ form.previous_work_experience_at }}</td>
+                </tr>
+
+                <tr>
+                    <th colspan="4">Current Work Experience</th>
+                </tr>
+                <tr>
+                    <td>Experience Type</td>
+                    <td>{{ form.current_work_experience_type }}</td>
+                    <td>Years</td>
+                    <td>{{ form.current_work_experience_years }}</td>
+                </tr>
+                <tr>
+                    <td>Job Profile</td>
+                    <td>{{ form.current_job_profile }}</td>
+                    <td>Workplace</td>
+                    <td>{{ form.current_work_experience_at }}</td>
+                </tr>
+
+                <tr>
+                    <th colspan="4">Additional Information</th>
+                </tr>
+                <tr>
+                    <td>Interests</td>
+                    <td colspan="3">{{ form.interests }}</td>
+                </tr>
+                <tr>
+                    <td>Keywords</td>
+                    <td colspan="3">{{ form.keywords }}</td>
+                </tr>
+                <tr>
+                    <td>Career Goal</td>
+                    <td colspan="3">{{ form.career_goal }}</td>
+                </tr>
+            </table>
+
+            <div style="text-align: center;">
+                <input type="submit" value="Lock In Your Accomplishments!" class="submit-button">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

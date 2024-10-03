@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Submitted</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff4e6; /* Light orange background */
+            text-align: center;
+            padding: 50px;
+        }
+
+        .success-message {
+            background-color: #ff9933; /* Bright orange background */
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            font-size: 22px;
+        }
+
+        .student-details {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #cc6600; /* Dark orange for text */
+        }
+
+        .thank-you-btn {
+            margin-top: 30px;
+            background-color: #ff6600; /* Orange button */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .thank-you-btn:hover {
+            background-color: #cc5200; /* Darker orange on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="success-message">
+        Feedback submitted successfully!
+    </div>
+
+    <div class="student-details">
+        <p><strong>Student ID:</strong> {{ student_id }}</p>
+        <p><strong>Student Name:</strong> {{ student_name }}</p>
+    </div>
+
+    <!-- Thank You Button that redirects to the login page -->
+    <a href="{% url 'login' %}" class="thank-you-btn">Thank You</a>
+
+</body>
+</html>

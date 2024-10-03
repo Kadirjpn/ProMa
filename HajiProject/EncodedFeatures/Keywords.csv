@@ -1,0 +1,6 @@
+Certificate,EncodedValue
+"C++, Java",0
+"Python, TensorFlow",1
+"Python, TensorFlow, Scikit-learn",2
+"SQL, Power BI",3
+"SQL, R, Power BI",4

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Result</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e0f7fa; /* Aligns with dashboard */
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00796b; /* Same green used in dashboard heading */
+            font-size: 28px;
+        }
+
+        .feedback-details {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            font-size: 18px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feedback-item {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #004d40; /* Same color used for body text in dashboard */
+        }
+
+        .feedback-item span {
+            font-weight: bold;
+            color: #00796b; /* Same green used in dashboard */
+        }
+
+        .sentiment-message {
+    margin-top: 25px;
+    padding: 20px 40px; /* Adding some horizontal padding for better spacing */
+    background: linear-gradient(135deg, #e0f7fa, #f0f8ff); /* Gradient background */
+    border-left: 8px solid #00796b; /* Slightly thicker green border on the left */
+    border-right: 8px solid #00796b; /* Matching border on the right for symmetry */
+    text-align: center;
+    color: #004d40;
+    font-size: 24px; /* Slightly larger font */
+    font-weight: bold;
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for hover effects */
+    letter-spacing: 1px; /* Slight spacing between letters */
+    line-height: 1.5; /* More breathing room between lines of text */
+}
+
+.sentiment-message:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+
+        .back-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-back {
+            background-color: #00796b; /* Same green button style as dashboard */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-back:hover {
+            background-color: #004d40; /* Darker green on hover */
+        }
+
+        @media (max-width: 600px) {
+            .feedback-details {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Feedback Result</h2>
+
+    <div class="feedback-details">
+        <div class="feedback-item">
+            <span>Counselor ID:</span> {{ c_id }}
+        </div>
+        <div class="feedback-item">
+            <span>Counselor Name:</span> {{ c_name }}
+        </div>
+        <div class="feedback-item">
+            <span>Feedback Date:</span> {{ f_date }}
+        </div>
+        <div class="feedback-item">
+            <span>Feedback Time:</span> {{ f_time }}
+        </div>
+        <div class="feedback-item">
+            <span>Feedback Text:</span> {{ f_text }}
+        </div>
+        <div class="sentiment-message">
+            <span>{{ score }}</span> <br>
+            {{ remark }}
+        </div>
+    </div>
+
+    <div class="back-button">
+        <!-- Back button that takes the user back to the dashboard -->
+        <a href="{% url 'dashboard' %}" class="btn-back">Back to Dashboard</a>
+    </div>
+
+</body>
+</html>
