@@ -34,8 +34,8 @@ def load_predefined_mappings():
     
     # Load class_mappings from class_mapping.txt
     try:
-        # cm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
-        with open('cm_path', 'r') as f:
+        clm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
+        with open('clm_path', 'r') as f:
             class_mappings = json.load(f)
     except json.JSONDecodeError:
         class_mappings = {}
