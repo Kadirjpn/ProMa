@@ -17,8 +17,8 @@ class NpEncoder(json.JSONEncoder):
         
 # Function to save updated class_mappings back to class_mapping.txt
 def save_updated_mappings(class_mappings):
-    cls_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
-    with open('cls_path', 'w') as f:
+    cm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
+    with open('cm_path', 'w') as f:
         modified_mappings = {
             k: {str(k2): v2 for k2, v2 in v.items()} if isinstance(v, dict) else v 
             for k, v in class_mappings.items()
@@ -34,7 +34,7 @@ def load_predefined_mappings():
     
     # Load class_mappings from class_mapping.txt
     try:
-        cm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
+        # cm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
         with open('cm_path', 'r') as f:
             class_mappings = json.load(f)
     except json.JSONDecodeError:
