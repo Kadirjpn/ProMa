@@ -14,10 +14,11 @@ class NpEncoder(json.JSONEncoder):
         if isinstance(obj, np.ndarray):
             return obj.tolist()
         return super(NpEncoder, self).default(obj)
-
+        
 # Function to save updated class_mappings back to class_mapping.txt
 def save_updated_mappings(class_mappings):
-    with open('D:\ProjectHaji\HajiProject\Data\class_mapping.txt', 'w') as f:
+    cls_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
+    with open('cls_path', 'w') as f:
         modified_mappings = {
             k: {str(k2): v2 for k2, v2 in v.items()} if isinstance(v, dict) else v 
             for k, v in class_mappings.items()
@@ -27,12 +28,14 @@ def save_updated_mappings(class_mappings):
 # Function to load predefined course_taken and class_mappings from text files
 def load_predefined_mappings():
     # Load course_taken mapping from course_taken.txt
-    with open('D:\ProjectHaji\HajiProject\Data\course_taken.txt', 'r') as f:
+    ct_path = Path(__file__).parents[1] / 'HajiProject/Data/course_taken.txt'
+    with open('ct_path', 'r') as f:
         course_taken = json.load(f)
     
     # Load class_mappings from class_mapping.txt
     try:
-        with open('D:\ProjectHaji\HajiProject\Data\class_mapping.txt', 'r') as f:
+        cm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
+        with open('cm_path', 'r') as f:
             class_mappings = json.load(f)
     except json.JSONDecodeError:
         class_mappings = {}
