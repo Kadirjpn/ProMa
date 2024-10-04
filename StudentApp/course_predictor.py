@@ -26,7 +26,7 @@ def save_updated_mappings(class_mappings):
         f.write(json.dumps(modified_mappings, cls=NpEncoder))
         
 ct_path = Path(__file__).parents[1] / 'HajiProject/Data/course_taken.txt'
-cm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
+# cm_path = Path(__file__).parents[1] / 'HajiProject/Data/class_mapping.txt'
 # Function to load predefined course_taken and class_mappings from text files
 def load_predefined_mappings():
     # Load course_taken mapping from course_taken.txt
