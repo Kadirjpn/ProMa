@@ -166,7 +166,7 @@ def predict_course(new_data):
     course_taken, class_mappings = load_predefined_mappings()
 
     # Load the historic data (this will contain df_features and df_target)
-    df = pd.read_csv('D:\ProjectHaji\HajiProject\Data\epic1data.csv')
+    df = pd.read_csv('HajiProject/Data/epic1data.csv')
 
     # Select relevant features
     df_features = df[['CGPA', 'Previous_Achievements', 'Certifications', 'Hard_Skills',
