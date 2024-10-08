@@ -3,16 +3,16 @@ import os
 
 # Dictionary containing the file paths to each encoding CSV
 ENCODING_FILES = {
-    'Previous_Achievements': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Previous_Achievements.csv',
-    'Certifications': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Certifications.csv',
-    'Hard_Skills': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Hard Skill 1.csv',
-    'Soft_Skills': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Soft Skill 1.csv',
-    'Previous_Work_Experience_Type': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Experience Type.csv',
-    'Previous_JobProfile': 'D:\ProjectHaji\HajiProject\EncodedFeatures\PreviousJobProfile.csv',
-    'Keywords': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Keywords.csv',
-    'Current_Job_Profile': 'D:\ProjectHaji\HajiProject\EncodedFeatures\CurrentJobProfile.csv',  
-    'Interests': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Interests.csv',
-    'Career Goal': 'D:\ProjectHaji\HajiProject\EncodedFeatures\Career Goal.csv'    
+    'Previous_Achievements': 'HajiProject/EncodedFeatures/Previous_Achievements.csv',
+    'Certifications': 'HajiProject/EncodedFeatures/Certifications.csv',
+    'Hard_Skills': 'HajiProject/EncodedFeatures/Hard Skill 1.csv',
+    'Soft_Skills': 'HajiProject/EncodedFeatures/Soft Skill 1.csv',
+    'Previous_Work_Experience_Type': 'HajiProject/EncodedFeatures/Experience Type.csv',
+    'Previous_JobProfile': 'HajiProject/EncodedFeatures/PreviousJobProfile.csv',
+    'Keywords': 'HajiProject/EncodedFeatures/Keywords.csv',
+    'Current_Job_Profile': 'HajiProject/EncodedFeatures/CurrentJobProfile.csv',  
+    'Interests': 'HajiProject/EncodedFeatures/Interests.csv',
+    'Career Goal': 'HajiProject/EncodedFeatures/Career Goal.csv'    
 }
 
 def load_encoding(file_path):
